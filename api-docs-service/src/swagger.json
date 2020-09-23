@@ -1,0 +1,270 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "description": "This is a sample Tradeling backend test.  You can find out more about Swagger at [http://swagger.io](http://swagger.io) or on [irc.freenode.net, #swagger](http://swagger.io/irc/).  For this sample, you can use the api key `special-key` to test the authorization filters.",
+    "version": "1.0.5",
+    "title": "Tradeling API Test",
+    "termsOfService": "http://swagger.io/terms/",
+    "contact": {
+      "email": "apiteam@swagger.io"
+    },
+    "license": {
+      "name": "Apache 2.0",
+      "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
+    }
+  },
+  "host": "localhost:8080",
+  "basePath": "/api/v1",
+  "tags": [
+    {
+      "name": "customer",
+      "description": "Accessing customer endpoint"
+    },
+    {
+      "name": "offer",
+      "description": "Accessing Offer endpoint"
+    },
+    {
+      "name": "voucher",
+      "description": "Accessing voucher endpoint"
+    }
+  ],
+  "schemes": [
+    "http",
+    "https"
+  ],
+  "paths": {
+    "/customer/create": {
+      "post": {
+        "tags": [
+          "customer"
+        ],
+        "summary": "create new customer",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "required": [
+                "name",
+                "email"
+              ],
+              "properties": {
+                "name": {
+                  "type": "string",
+                  "example": "John Doe"
+                },
+                "email": {
+                  "type": "string",
+                  "example": "johnDoe@apple.com"
+                }
+              }
+            }
+          }
+        ],
+        "description": "",
+        "operationId": "customer-module",
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          },
+          "500": {
+            "description": "failed operation"
+          }
+        }
+      }
+    },
+    "/offer/create": {
+      "post": {
+        "tags": [
+          "offer"
+        ],
+        "summary": "create new offer",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "required": [
+                "name",
+                "discount"
+              ],
+              "properties": {
+                "name": {
+                  "type": "string",
+                  "example": "Macbook Pro"
+                },
+                "discount": {
+                  "type": "number",
+                  "example": 50
+                }
+              }
+            }
+          }
+
+        ],
+        "description": "",
+        "operationId": "offer-module",
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          },
+          "500": {
+            "description": "failed operation"
+          }
+        }
+      }
+    },
+  "/voucher/create": {
+    "post": {
+      "tags": [
+        "voucher"
+      ],
+      "summary": "create new voucher",
+      "parameters": [
+        {
+          "in": "body",
+          "name": "body",
+          "required": true,
+          "schema": {
+            "type": "object",
+            "required": [
+              "name",
+              "email",
+              "expiry_date"
+            ],
+            "properties": {
+              "name": {
+                "type": "string",
+                "example": "Apple macBook Pro"
+              },
+              "email": {
+                "type": "string",
+                "example": "test@abc.xyz"
+              },
+              "expiry_date": {
+                "type": "string",
+                "example": "2020/09/23"
+              }
+            }
+          }
+        }
+
+      ],
+      "description": "",
+      "operationId": "voucher-module",
+      "produces": [
+        "application/json"
+      ],
+      "responses": {
+        "200": {
+          "description": "successful operation"
+        },
+        "500": {
+          "description": "failed operation"
+        }
+      }
+    }
+  },
+  "/voucher": {
+    "post": {
+      "tags": [
+        "voucher"
+      ],
+      "summary": "get customer voucher via email",
+      "parameters": [
+        {
+          "in": "body",
+          "name": "body",
+          "required": true,
+          "schema": {
+            "type": "object",
+            "required": [
+              "email"
+            ],
+            "properties": {
+              "email": {
+                "type": "string",
+                "example": "test@abc.xyz"
+              }
+            }
+          }
+        }
+      ],
+      "description": "",
+      "operationId": "voucher-module",
+      "produces": [
+        "application/json"
+      ],
+      "responses": {
+        "200": {
+          "description": "successful operation"
+        },
+        "500": {
+          "description": "failed operation"
+        }
+      }
+    }
+  },
+  "/voucher/use": {
+    "post": {
+      "tags": [
+        "voucher"
+      ],
+      "summary": "use a voucher endpoint",
+      "parameters": [
+        {
+          "in": "body",
+          "name": "body",
+          "required": true,
+          "schema": {
+            "type": "object",
+            "required": [
+              "code",
+              "email"
+            ],
+            "properties": {
+              "code": {
+                "type": "string",
+                "example": "hdfjhjd5"
+              },
+              "email": {
+                "type": "string",
+                "example": "test@abc.xyz"
+              }
+            }
+          }
+        }
+
+      ],
+      "description": "",
+      "operationId": "voucher-module",
+      "produces": [
+        "application/json"
+      ],
+      "responses": {
+        "200": {
+          "description": "successful operation"
+        },
+        "500": {
+          "description": "failed operation"
+        }
+      }
+    }
+  }
+},
+  "externalDocs": {
+    "description": "Find out more about Swagger",
+    "url": "http://swagger.io"
+  }
+}
